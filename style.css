@@ -1,13 +1,16 @@
 :root {
-	--main-back: #000;
-	--main-text: #fff;
-	--main-p-text: #423289;
+    --main-back: #000;
+    --main-text: #fff;
+    /*    --deep-water: #423289;*/
+    --deep-water: #9787de;
 }
 
 * {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
+
+/*mozilla dots on button*/
 
 a:focus,
 a:active,
@@ -17,14 +20,39 @@ input[type="button"]::-moz-focus-inner,
 input[type="submit"]::-moz-focus-inner,
 select::-moz-focus-inner,
 input[type="file"] > input[type="button"]::-moz-focus-inner {
-	border: 0;
-	outline: 0;
+    border: 0;
+    outline: 0;
 }
 
+/*mozilla/chrome list problem*/
+
 ul {
-	-webkit-margin-before: 0em;
-	-webkit-margin-after: 0em;
-	-webkit-margin-start: 0em;
-	-webkit-margin-end: 0px;
-	-webkit-padding-start: 0px;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0em;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
+
+body {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    margin: 10px auto 20px 50px;
+}
+
+fotter span {
+    display: flex;
+}
+
+fotter span p {
+    margin: 0 10px;
+}
+
+#boats_canvas {
+    border: 4px solid var(--deep-water);
+    border-radius: 15px;
 }
