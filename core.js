@@ -36,7 +36,7 @@ function shipyar(posX, posY, prow, stern, L_side, R_side, speed, rot, color) {
     this.color = color;
 
 };
-const p_ship = new shipyar(180, 350, 40, 10, 10, 10, 1, 0, 'green')
+const p_ship = new shipyar(180, 350, 40, 10, 10, 10, 4, 0, 'green')
 let pl_pX = p_ship.posX;
 let pl_pY = p_ship.posY;
 let pl_Prow = p_ship.prow;
@@ -123,6 +123,7 @@ function waypoint() {
                 x00 = wayx;
                 y00 = wayy;
                 flag();
+                move();
                 flag_num++;
                 console.log("pierwsza");
                 break;
@@ -134,6 +135,7 @@ function waypoint() {
                 x11 = wayx;
                 y11 = wayy;
                 flag1();
+                move();
                 flag_num++;
                 console.log("druga");
                 break;
@@ -145,6 +147,7 @@ function waypoint() {
                 x22 = wayx;
                 y22 = wayy;
                 flag2();
+                move();
                 flag_num++;
                 console.log("trzecia");
                 break;
@@ -167,14 +170,31 @@ function waypoint() {
 
 function move() {
     if (pl_pY > wayy) {
+        console.log(pl_pY);
+        var y = pl_pY;
+        console.log(pl_pY);
+        pl_pY = y - ((y - wayy) / pl_speed);
+        console.log(pl_pY, y, wayy);
         console.log("-w gore-");
     } else if (pl_pY < wayy) {
+        console.log(pl_pY);
+        var y = pl_pY;
+        console.log(pl_pY);
+        pl_pY = y + ((wayy - y) / pl_speed);
         console.log("-w dol-");
     }
     if (pl_pX > wayx) {
+        console.log(pl_pX);
+        var x = pl_pX;
+        console.log(pl_pX);
+        pl_pX = x - ((x - wayx) / pl_speed);
         console.log("-w lewo-");
 
     } else if (pl_pX < wayx) {
+        console.log(pl_pX);
+        var x = pl_pX;
+        console.log(pl_pX);
+        pl_pX = x + ((wayx - x) / pl_speed);
         console.log("-w prawo-");
     }
 
@@ -184,7 +204,7 @@ canv.addEventListener("click", waypoint);
 
 
 
-canv.addEventListener("click", move);
+//canv.addEventListener("click", move);
 
 function game() {
     interface();
