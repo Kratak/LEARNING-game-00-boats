@@ -36,7 +36,7 @@ function shipyar(posX, posY, prow, stern, L_side, R_side, speed, rot, color) {
     this.color = color;
 
 };
-const p_ship = new shipyar(180, 350, 40, 10, 10, 10, 4, 0, 'green')
+const p_ship = new shipyar(180, 350, 40, 10, 10, 10, 100, 0, 'green')
 let pl_pX = p_ship.posX;
 let pl_pY = p_ship.posY;
 let pl_Prow = p_ship.prow;
@@ -112,6 +112,7 @@ function flag2() {
 
 let x00, x11, x22, y00, y11, y22;
 
+
 function waypoint() {
     wayx = mousex - 15 - canvoffleft;
     wayy = mousey - 15 - canvofftop;
@@ -122,8 +123,7 @@ function waypoint() {
                 fs = flag_size;
                 x00 = wayx;
                 y00 = wayy;
-                flag();
-                move();
+                setTimeout(setInterval(move, 1000 / 60), 2000)
                 flag_num++;
                 console.log("pierwsza");
                 break;
@@ -134,8 +134,7 @@ function waypoint() {
                 fs1 = flag_size;
                 x11 = wayx;
                 y11 = wayy;
-                flag1();
-                move();
+                setTimeout(setInterval(move, 1000 / 60), 4000)
                 flag_num++;
                 console.log("druga");
                 break;
@@ -146,8 +145,7 @@ function waypoint() {
                 fs2 = flag_size;
                 x22 = wayx;
                 y22 = wayy;
-                flag2();
-                move();
+                setTimeout(setInterval(move, 1000 / 60), 6000)
                 flag_num++;
                 console.log("trzecia");
                 break;
@@ -158,9 +156,6 @@ function waypoint() {
                 fs = 0;
                 fs1 = 0;
                 fs2 = 0;
-                flag();
-                flag1();
-                flag2();
                 console.log("reset");
                 break;
             }
@@ -170,30 +165,21 @@ function waypoint() {
 
 function move() {
     if (pl_pY > wayy) {
-        console.log(pl_pY);
         var y = pl_pY;
-        console.log(pl_pY);
         pl_pY = y - ((y - wayy) / pl_speed);
-        console.log(pl_pY, y, wayy);
         console.log("-w gore-");
     } else if (pl_pY < wayy) {
-        console.log(pl_pY);
         var y = pl_pY;
-        console.log(pl_pY);
         pl_pY = y + ((wayy - y) / pl_speed);
         console.log("-w dol-");
     }
     if (pl_pX > wayx) {
-        console.log(pl_pX);
         var x = pl_pX;
-        console.log(pl_pX);
         pl_pX = x - ((x - wayx) / pl_speed);
         console.log("-w lewo-");
 
     } else if (pl_pX < wayx) {
-        console.log(pl_pX);
         var x = pl_pX;
-        console.log(pl_pX);
         pl_pX = x + ((wayx - x) / pl_speed);
         console.log("-w prawo-");
     }
@@ -217,4 +203,4 @@ function game() {
     flag2();
 
 };
-setInterval(game, 1000 / 2)
+setInterval(game, 1000 / 60)
