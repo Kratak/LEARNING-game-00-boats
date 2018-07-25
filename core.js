@@ -5,6 +5,12 @@ canv.height = 500;
 const CW = canv.width;
 const CH = canv.height;
 
+let mousex;
+let mousey;
+let canvofftop = canv.offsetTop;
+console.log(canvofftop);
+let canvoffleft = canv.offsetLeft;
+console.log(canvoffleft);
 let deep_water = "#423289";
 let top_score_back = "#7565bc";
 let inside_back = "#9787de";
@@ -68,6 +74,21 @@ function side_table() {
 function water() {
     ctx.fillStyle = deep_water;
     ctx.fillRect(0, 50, CW - 100, CH);
+};
+canv.addEventListener("click", waypoint);
+canv.addEventListener("mousemove", mousepos);
+
+function mousepos(e) {
+    mousex = e.clientX;
+    mousey = e.clientY;
+}
+
+function waypoint() {
+    ctx.fillStyle = "#fff";
+    let x = mousex - 15 - canvoffleft;
+    let y = mousey - 15 - canvofftop;
+    ctx.fillRect(x, y, 20, 20);
+    console.log("rysowanie");
 };
 
 
